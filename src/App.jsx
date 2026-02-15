@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 const BRACKETS_SINGLE = [
-  { min: 0, max: 11925, rate: 10 },
-  { min: 11925, max: 48475, rate: 12 },
-  { min: 48475, max: 103350, rate: 22 },
-  { min: 103350, max: 197300, rate: 24 },
-  { min: 197300, max: 250525, rate: 32 },
-  { min: 250525, max: 626350, rate: 35 },
-  { min: 626350, max: Infinity, rate: 37 },
+  { min: 0, max: 12400, rate: 10 },
+  { min: 12400, max: 50400, rate: 12 },
+  { min: 50400, max: 105700, rate: 22 },
+  { min: 105700, max: 201775, rate: 24 },
+  { min: 201775, max: 256225, rate: 32 },
+  { min: 256225, max: 640600, rate: 35 },
+  { min: 640600, max: Infinity, rate: 37 },
 ];
 
 const BRACKETS_MFJ = [
-  { min: 0, max: 23850, rate: 10 },
-  { min: 23850, max: 96950, rate: 12 },
-  { min: 96950, max: 206700, rate: 22 },
-  { min: 206700, max: 394600, rate: 24 },
-  { min: 394600, max: 501050, rate: 32 },
-  { min: 501050, max: 751600, rate: 35 },
-  { min: 751600, max: Infinity, rate: 37 },
+  { min: 0, max: 24800, rate: 10 },
+  { min: 24800, max: 100800, rate: 12 },
+  { min: 100800, max: 211400, rate: 22 },
+  { min: 211400, max: 403550, rate: 24 },
+  { min: 403550, max: 512450, rate: 32 },
+  { min: 512450, max: 768700, rate: 35 },
+  { min: 768700, max: Infinity, rate: 37 },
 ];
 
 function getMarginalBracket(income, filing) {
@@ -28,19 +28,19 @@ function getMarginalBracket(income, filing) {
   return 10;
 }
 
-const HSA_LIMIT_SELF = 4300;
-const HSA_LIMIT_FAMILY = 8550;
+const HSA_LIMIT_SELF = 4400;
+const HSA_LIMIT_FAMILY = 8750;
 const HSA_CATCHUP = 1000;
-const LIMIT_401K = 23500;
-const LIMIT_401K_CATCHUP = 7500;
+const LIMIT_401K = 24500;
+const LIMIT_401K_CATCHUP = 8000;
 const LIMIT_401K_SUPER_CATCHUP = 11250;
-const IRA_LIMIT = 7000;
-const IRA_CATCHUP = 1000;
+const IRA_LIMIT = 7500;
+const IRA_CATCHUP = 1100;
 
-const ROTH_PHASEOUT_SINGLE = { start: 150000, end: 165000 };
-const ROTH_PHASEOUT_MFJ = { start: 236000, end: 246000 };
-const TRAD_PHASEOUT_SINGLE = { start: 79000, end: 89000 };
-const TRAD_PHASEOUT_MFJ = { start: 126000, end: 146000 };
+const ROTH_PHASEOUT_SINGLE = { start: 153000, end: 168000 };
+const ROTH_PHASEOUT_MFJ = { start: 242000, end: 252000 };
+const TRAD_PHASEOUT_SINGLE = { start: 81000, end: 91000 };
+const TRAD_PHASEOUT_MFJ = { start: 129000, end: 149000 };
 
 function getRothEligibility(income, filing) {
   const po = filing === "single" ? ROTH_PHASEOUT_SINGLE : ROTH_PHASEOUT_MFJ;
@@ -202,7 +202,7 @@ function GrowthPill({ text }) {
 }
 
 export default function RetirementGuide() {
-  const [filing, setFiling] = useState("single");
+  const [filing, setFiling] = useState("mfj");
   const [income, setIncome] = useState(75000);
   const [age, setAge] = useState(30);
 
@@ -310,15 +310,29 @@ export default function RetirementGuide() {
       `}</style>
 
       <div style={{ maxWidth: 680, margin: "0 auto", paddingTop: 40, paddingBottom: 60 }}>
-        <h1 style={{ fontSize: 28, fontWeight: 700, color: "#2D2A3E", margin: "0 0 12px" }}>
-          💰 Your Retirement Savings Playbook
+        <span style={{
+          display: "inline-block",
+          fontSize: 11,
+          fontWeight: 600,
+          color: "#6C63FF",
+          backgroundColor: "#EEEDFF",
+          borderRadius: 20,
+          padding: "4px 12px",
+          marginBottom: 12,
+          letterSpacing: 0.3,
+        }}>
+          2026 IRS Limits & Brackets
+        </span>
+        <h1 style={{ fontSize: 28, fontWeight: 700, color: "#2D2A3E", margin: "0 0 14px" }}>
+          The Best Financial Move Nobody Taught Me
         </h1>
-        <p style={{ fontSize: 15, color: "#5A5670", lineHeight: 1.6, margin: "0 0 4px", maxWidth: 600 }}>
-          Retirement accounts are like containers — some save you taxes now, others later,
-          and one (HSA) saves you taxes at every step. Adjust the sliders for personalized advice.
+        <p style={{ fontSize: 16, color: "#433E56", lineHeight: 1.65, margin: "0 0 12px", maxWidth: 600, fontWeight: 450 }}>
+          I wish someone had shown me this 10 years earlier. Three tax-advantaged accounts are
+          the most powerful wealth-building tools available to regular people — and most of us
+          aren't using them right.
         </p>
-        <p style={{ fontSize: 11, color: "#9994B0", fontStyle: "italic", margin: "8px 0 24px" }}>
-          2025 IRS limits & brackets. Educational info, not financial advice.
+        <p style={{ fontSize: 15, fontWeight: 600, color: "#E5574F", margin: "0 0 24px" }}>
+          Every year you delay costs you tens of thousands in growth.
         </p>
 
         <div
@@ -409,14 +423,17 @@ export default function RetirementGuide() {
             <strong style={{ color: "#2D2A3E" }}>Invest it — don't spend it.</strong>{" "}
             Save medical receipts and reimburse yourself years later tax-free.
           </p>
+          <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "6px 0 0" }}>Requires a High Deductible Health Plan (HDHP).</p>
           {yrs > 0 && <GrowthPill text={`Maxed at 7% for ${yrs} yrs → ~${fmt(projHSA)}`} />}
+          <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
+            No HDHP yet? Ask your employer about high-deductible plan options — it's worth it for the triple tax benefit. If your employer doesn't offer one, start with #2.
+          </p>
           <LearnMore>
             <p style={{ margin: "0 0 8px" }}>The HSA has <strong>triple tax benefits</strong>:</p>
             <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-deductible contributions</strong> — reduces taxable income this year.</p>
             <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free growth</strong> — no capital gains or dividend taxes.</p>
             <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free withdrawals</strong> — for qualified medical expenses.</p>
             <p style={{ margin: "12px 0 0" }}><strong>Pro tip:</strong> Save receipts in Google Drive and reimburse yourself years later. After 65, withdraw for any purpose (just pay income tax like a Traditional IRA).</p>
-            <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>Requires a High Deductible Health Plan (HDHP).</p>
           </LearnMore>
         </Card>
 
@@ -434,6 +451,9 @@ export default function RetirementGuide() {
             <p style={{ margin: "8px 0 0" }}><strong>Allocation tip:</strong> A target-date fund matching your retirement year is a solid default.</p>
             <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>⚠️ A 1% annual fee can cost ~$200K+ over 30 years. Use low-cost index funds when available.</p>
           </LearnMore>
+          <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
+            No employer plan? Skip to #3 — an IRA is your best option.
+          </p>
         </Card>
 
         <Card icon="📈" title="3. Fund an IRA" badge={<Badge type={recIRA} />}>
@@ -454,6 +474,9 @@ export default function RetirementGuide() {
             <p style={{ margin: "12px 0 0" }}><strong>Backdoor Roth:</strong> If over the Roth limit, contribute to non-deductible Traditional IRA, then convert to Roth. Common and legal. Consult a tax advisor if you have existing Traditional IRA balances (pro-rata rule).</p>
             <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>Contribution limit is across all IRAs combined, not per account.</p>
           </LearnMore>
+          <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
+            Available to everyone with earned income — no employer plan needed.
+          </p>
         </Card>
 
         {yrs > 0 && (
@@ -474,7 +497,7 @@ export default function RetirementGuide() {
           <p style={{ margin: 0 }}>
             Built with care to help people make better financial decisions.<br />
             Not financial advice — consult a professional for your situation.<br />
-            Tax brackets & limits reflect 2025 IRS guidelines.
+            Tax brackets & limits reflect 2026 IRS guidelines.
           </p>
         </div>
       </div>
