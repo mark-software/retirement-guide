@@ -237,22 +237,22 @@ export default function RetirementGuide() {
   let recIRA, textIRA;
   if (rothElig === "none") {
     recIRA = "backdoor";
-    textIRA = `Your income exceeds the Roth IRA limit. Look into a Backdoor Roth — contribute to a non-deductible Traditional IRA and convert to Roth.`;
+    textIRA = `Your income exceeds the Roth IRA limit. Look into a Backdoor Roth - contribute to a non-deductible Traditional IRA and convert to Roth.`;
   } else if (rothElig === "partial") {
     recIRA = "partial";
     textIRA = `You're in the Roth phase-out range. You can make a reduced contribution, or do a Backdoor Roth (contribute Traditional, then convert).`;
   } else if (bracket <= 12) {
     recIRA = "roth";
-    textIRA = `Fully eligible for Roth IRA and in a low bracket — pay low taxes now, withdraw tax-free later. Clear winner.`;
+    textIRA = `Fully eligible for Roth IRA and in a low bracket - pay low taxes now, withdraw tax-free later. Clear winner.`;
   } else if (tradDeduct === "full" && bracket >= 24) {
     recIRA = "traditional";
     textIRA = `At the ${bracket}% bracket with a full Traditional IRA deduction available, the tax break now is very valuable.`;
   } else if (tradDeduct !== "full") {
     recIRA = "roth";
-    textIRA = `Traditional IRA isn't fully deductible for you (employer plan + income), so Roth is better — at least withdrawals will be tax-free.`;
+    textIRA = `Traditional IRA isn't fully deductible for you (employer plan + income), so Roth is better - at least withdrawals will be tax-free.`;
   } else {
     recIRA = "consider";
-    textIRA = `You're eligible for both deductible Traditional and Roth IRA. At ${bracket}%, either is reasonable — Traditional for the deduction now, Roth for tax-free later.`;
+    textIRA = `You're eligible for both deductible Traditional and Roth IRA. At ${bracket}%, either is reasonable - Traditional for the deduction now, Roth for tax-free later.`;
   }
 
   const projHSA = compoundGrowth(hsaTotal, yrs, 0.07);
@@ -328,7 +328,7 @@ export default function RetirementGuide() {
         </h1>
         <p style={{ fontSize: 16, color: "#433E56", lineHeight: 1.65, margin: "0 0 12px", maxWidth: 600, fontWeight: 450 }}>
           I wish someone had shown me this 10 years earlier. Three tax-advantaged accounts are
-          the most powerful wealth-building tools available to regular people — and most of us
+          the most powerful wealth-building tools available to regular people - and most of us
           aren't using them right.
         </p>
         <p style={{ fontSize: 15, fontWeight: 600, color: "#E5574F", margin: "0 0 24px" }}>
@@ -420,39 +420,65 @@ export default function RetirementGuide() {
           <p style={{ fontSize: 13, lineHeight: 1.6, color: "#5A5670", margin: 0 }}>
             Contribute the full <strong style={{ color: "#2D2A3E" }}>{fmt(hsaTotal)}/yr</strong>{" "}
             ({filing === "mfj" ? "family" : "self-only"}{age >= 55 ? " + $1K catch-up" : ""}).{" "}
-            <strong style={{ color: "#2D2A3E" }}>Invest it — don't spend it.</strong>{" "}
+            <strong style={{ color: "#2D2A3E" }}>Invest it - don't spend it.</strong>{" "}
             Save medical receipts and reimburse yourself years later tax-free.
           </p>
           <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "6px 0 0" }}>Requires a High Deductible Health Plan (HDHP).</p>
           {yrs > 0 && <GrowthPill text={`Maxed at 7% for ${yrs} yrs → ~${fmt(projHSA)}`} />}
           <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
-            No HDHP yet? Ask your employer about high-deductible plan options — it's worth it for the triple tax benefit. If your employer doesn't offer one, start with #2.
+            No HDHP yet? Ask your employer about high-deductible plan options - it's worth it for the triple tax benefit. If your employer doesn't offer one, see below.
           </p>
           <LearnMore>
             <p style={{ margin: "0 0 8px" }}>The HSA has <strong>triple tax benefits</strong>:</p>
-            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-deductible contributions</strong> — reduces taxable income this year.</p>
-            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free growth</strong> — no capital gains or dividend taxes.</p>
-            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free withdrawals</strong> — for qualified medical expenses.</p>
+            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-deductible contributions</strong> - reduces taxable income this year.</p>
+            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free growth</strong> - no capital gains or dividend taxes.</p>
+            <p style={{ margin: "0 0 4px" }}>✅ <strong>Tax-free withdrawals</strong> - for qualified medical expenses.</p>
             <p style={{ margin: "12px 0 0" }}><strong>Pro tip:</strong> Save receipts in Google Drive and reimburse yourself years later. After 65, withdraw for any purpose (just pay income tax like a Traditional IRA).</p>
+            <div style={{ marginTop: 16, padding: 12, backgroundColor: "#E8F5E9", borderRadius: 8, border: "1px solid #C8E6C9" }}>
+              <p style={{ margin: "0 0 6px", fontWeight: 700, fontSize: 13, color: "#2E7D32" }}>🧑‍💻 Self-employed or no employer HDHP?</p>
+              <p style={{ margin: "0 0 8px" }}>You don't need an employer to get an HSA. Here's what to do:</p>
+              <p style={{ margin: "0 0 4px" }}><strong>1.</strong> Buy an HDHP on <a href="https://www.healthcare.gov" target="_blank" rel="noopener noreferrer" style={{ color: "#1565C0" }}>Healthcare.gov</a>. As of 2026, <strong>all Bronze and Catastrophic plans now qualify as HDHPs</strong> - this is new and makes it way easier.</p>
+              <p style={{ margin: "0 0 4px" }}><strong>2.</strong> Open an HSA at <strong>Fidelity</strong> or <strong>Vanguard</strong> - both have no fees and great low-cost index fund options.</p>
+              <p style={{ margin: "0 0 4px" }}><strong>3.</strong> Contribute directly and deduct it on your tax return. You don't get the payroll tax exclusion, but you still get the full income tax deduction.</p>
+              <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>The only requirement is a qualifying HDHP - your employment status doesn't matter.</p>
+            </div>
           </LearnMore>
         </Card>
 
         <Card icon="🏢" title="2. Contribute to Your 401k" badge={<Badge type={rec401k} />}>
           <p style={{ fontSize: 13, lineHeight: 1.6, color: "#5A5670", margin: 0 }}>
             {text401k} Limit: <strong style={{ color: "#2D2A3E" }}>{fmt(k401)}/yr</strong>
-            {age >= 50 ? " (includes catch-up)" : ""}. Always get your full employer match first — that's free money.
+            {age >= 50 ? " (includes catch-up)" : ""}. Always get your full employer match first - that's free money.
           </p>
           {yrs > 0 && <GrowthPill text={`Maxed at 7% for ${yrs} yrs → ~${fmt(proj401k)}${rec401k !== "roth" ? " (taxed on withdrawal if Traditional)" : " (tax-free if Roth)"}`} />}
           <LearnMore>
             <p style={{ margin: "0 0 8px" }}>The key choice is <strong>Roth vs. Traditional</strong>:</p>
-            <p style={{ margin: "0 0 4px" }}>🔵 <strong>Roth 401k</strong> — pay taxes now, withdraw tax-free. Best when your rate is low.</p>
-            <p style={{ margin: "0 0 4px" }}>🟠 <strong>Traditional 401k</strong> — deduct now, pay taxes on withdrawals. Best when your rate is high.</p>
+            <p style={{ margin: "0 0 4px" }}>🔵 <strong>Roth 401k</strong> - pay taxes now, withdraw tax-free. Best when your rate is low.</p>
+            <p style={{ margin: "0 0 4px" }}>🟠 <strong>Traditional 401k</strong> - deduct now, pay taxes on withdrawals. Best when your rate is high.</p>
             <p style={{ margin: "12px 0 0" }}><strong>Rule of thumb:</strong> 12% or below → Roth. 22% → toss-up. 24%+ → Traditional.</p>
             <p style={{ margin: "8px 0 0" }}><strong>Allocation tip:</strong> A target-date fund matching your retirement year is a solid default.</p>
             <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>⚠️ A 1% annual fee can cost ~$200K+ over 30 years. Use low-cost index funds when available.</p>
+            <div style={{ marginTop: 16, padding: 12, backgroundColor: "#E3F2FD", borderRadius: 8, border: "1px solid #BBDEFB" }}>
+              <p style={{ margin: "0 0 6px", fontWeight: 700, fontSize: 13, color: "#1565C0" }}>🧑‍💻 No employer 401k? Use a Solo 401(k) or SEP IRA</p>
+              <p style={{ margin: "0 0 10px" }}>If you have any self-employment income (freelancing, side business, 1099 work), you can open your own retirement plan:</p>
+              <p style={{ margin: "0 0 4px" }}><strong>Solo 401(k) - best for most people</strong></p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Contribute up to <strong>$72,000/yr</strong> in 2026 ($24,500 employee + 25% of compensation as employer).</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Supports both Roth and Traditional contributions - huge advantage.</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Catch-up: $8,000 extra if 50+, or $11,250 if ages 60-63.</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Open one free at <strong>Fidelity</strong> or <strong>Vanguard</strong> - no setup or annual fees.</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Must be established by <strong>Dec 31</strong> of the tax year.</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Only available if you have no full-time W-2 employees (spouse is okay).</p>
+              <p style={{ margin: "12px 0 4px" }}><strong>SEP IRA - simpler but less flexible</strong></p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Contribute up to 25% of net self-employment income (max $72,000 in 2026).</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Employer-only contributions - no employee deferrals, no catch-up.</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• You'd need ~$280K income to hit the max. Lower earners save more with a Solo 401(k).</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Can be opened up until your tax filing deadline (including extensions).</p>
+              <p style={{ margin: "0 0 4px", paddingLeft: 8 }}>• Open at <strong>Fidelity</strong> or <strong>Vanguard</strong>.</p>
+              <p style={{ margin: "12px 0 0", fontSize: 12, fontWeight: 600, color: "#1565C0" }}>💡 My recommendation: If you're self-employed, go with a Solo 401(k) at Fidelity or Vanguard. You get Roth access, higher contribution potential at lower incomes, and catch-up contributions. SEP IRA is fine if you want zero admin and have high income.</p>
+            </div>
           </LearnMore>
           <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
-            No employer plan? Skip to #3 — an IRA is your best option.
+            No employer plan? Open a Solo 401(k) or SEP IRA - see "Learn more" above.
           </p>
         </Card>
 
@@ -469,13 +495,13 @@ export default function RetirementGuide() {
           {yrs > 0 && <GrowthPill text={`${fmt(iraLimit)}/yr at 7% for ${yrs} yrs → ~${fmt(projIRA)}${recIRA === "roth" ? " tax-free" : ""}`} />}
           <LearnMore>
             <p style={{ margin: "0 0 8px" }}>An IRA is separate from your employer plan:</p>
-            <p style={{ margin: "0 0 4px" }}>🔵 <strong>Roth IRA</strong> — tax-free withdrawals. Phase-out: {filing === "single" ? `${fmt(poSingle.start)}–${fmt(poSingle.end)}` : `${fmt(poMFJ.start)}–${fmt(poMFJ.end)} MFJ`}.</p>
-            <p style={{ margin: "0 0 4px" }}>🟠 <strong>Traditional IRA</strong> — deduction phase-out (with employer plan): {filing === "single" ? `${fmt(TRAD_PHASEOUT_SINGLE.start)}–${fmt(TRAD_PHASEOUT_SINGLE.end)}` : `${fmt(TRAD_PHASEOUT_MFJ.start)}–${fmt(TRAD_PHASEOUT_MFJ.end)} MFJ`}.</p>
+            <p style={{ margin: "0 0 4px" }}>🔵 <strong>Roth IRA</strong> - tax-free withdrawals. Phase-out: {filing === "single" ? `${fmt(poSingle.start)}–${fmt(poSingle.end)}` : `${fmt(poMFJ.start)}–${fmt(poMFJ.end)} MFJ`}.</p>
+            <p style={{ margin: "0 0 4px" }}>🟠 <strong>Traditional IRA</strong> - deduction phase-out (with employer plan): {filing === "single" ? `${fmt(TRAD_PHASEOUT_SINGLE.start)}–${fmt(TRAD_PHASEOUT_SINGLE.end)}` : `${fmt(TRAD_PHASEOUT_MFJ.start)}–${fmt(TRAD_PHASEOUT_MFJ.end)} MFJ`}.</p>
             <p style={{ margin: "12px 0 0" }}><strong>Backdoor Roth:</strong> If over the Roth limit, contribute to non-deductible Traditional IRA, then convert to Roth. Common and legal. Consult a tax advisor if you have existing Traditional IRA balances (pro-rata rule).</p>
             <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>Contribution limit is across all IRAs combined, not per account.</p>
           </LearnMore>
           <p style={{ fontSize: 11, fontStyle: "italic", color: "#9994B0", margin: "8px 0 0", lineHeight: 1.5 }}>
-            Available to everyone with earned income — no employer plan needed.
+            Available to everyone with earned income - no employer plan needed.
           </p>
         </Card>
 
@@ -496,7 +522,7 @@ export default function RetirementGuide() {
         <div style={{ textAlign: "center", paddingTop: 24, fontSize: 11, color: "#B0ADBD" }}>
           <p style={{ margin: 0 }}>
             Built with care to help people make better financial decisions.<br />
-            Not financial advice — consult a professional for your situation.<br />
+            Not financial advice - consult a professional for your situation.<br />
             Tax brackets & limits reflect 2026 IRS guidelines.
           </p>
         </div>
