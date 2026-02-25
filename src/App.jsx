@@ -487,6 +487,11 @@ export default function RetirementGuide() {
             {textIRA} Limit: <strong style={{ color: "#2D2A3E" }}>{fmt(iraLimit)}/yr</strong>
             {age >= 50 ? " (includes $1K catch-up)" : ""}. Use Vanguard or Fidelity.
           </p>
+          {recIRA === "roth" && tradDeduct !== "full" && bracket > 12 && (
+            <div style={{ marginTop: 10, padding: 10, backgroundColor: "#E3F2FD", border: "1px solid #BBDEFB", borderRadius: 8, fontSize: 11, color: "#1565C0", lineHeight: 1.5 }}>
+              💡 No employer retirement plan? (self-employed, no 401k) Your Traditional IRA deduction has no income phaseout — at the {bracket}% bracket, Traditional is likely the better choice.
+            </div>
+          )}
           {rothElig !== "none" && (
             <p style={{ fontSize: 11, marginTop: 6, color: "#5A5670" }}>
               Roth phase-out ({filing === "single" ? "Single" : "MFJ"}): {filing === "single" ? `${fmt(poSingle.start)}–${fmt(poSingle.end)}` : `${fmt(poMFJ.start)}–${fmt(poMFJ.end)}`}
