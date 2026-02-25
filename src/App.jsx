@@ -227,8 +227,8 @@ export default function RetirementGuide() {
     rec401k = "roth";
     text401k = `At the ${bracket}% bracket, your tax rate is low. Roth 401k lets you pay taxes now (cheap) and withdraw tax-free later.`;
   } else if (bracket === 22) {
-    rec401k = "consider";
-    text401k = `The 22% bracket is the crossover zone. Traditional saves you money now; Roth gives tax flexibility in retirement. Many people split or lean Traditional.`;
+    rec401k = "traditional";
+    text401k = `At the 22% bracket, Traditional 401k is the stronger play - you're saving at 22% now and will likely withdraw at a blended 10-15% in retirement.`;
   } else {
     rec401k = "traditional";
     text401k = `At the ${bracket}% bracket, Traditional 401k's upfront deduction is valuable. You'll likely be in a lower bracket in retirement.`;
@@ -251,8 +251,8 @@ export default function RetirementGuide() {
     recIRA = "roth";
     textIRA = `Traditional IRA isn't fully deductible for you (employer plan + income), so Roth is better - at least withdrawals will be tax-free.`;
   } else {
-    recIRA = "consider";
-    textIRA = `You're eligible for both deductible Traditional and Roth IRA. At ${bracket}%, either is reasonable - Traditional for the deduction now, Roth for tax-free later.`;
+    recIRA = "traditional";
+    textIRA = `At the ${bracket}% bracket, Traditional IRA is the stronger play - you're saving at ${bracket}% now and will likely withdraw at a blended 10-15% in retirement.`;
   }
 
   const projHSA = compoundGrowth(hsaTotal, yrs, 0.07);
@@ -455,7 +455,7 @@ export default function RetirementGuide() {
             <p style={{ margin: "0 0 8px" }}>The key choice is <strong>Roth vs. Traditional</strong>:</p>
             <p style={{ margin: "0 0 4px" }}>🔵 <strong>Roth 401k</strong> - pay taxes now, withdraw tax-free. Best when your rate is low.</p>
             <p style={{ margin: "0 0 4px" }}>🟠 <strong>Traditional 401k</strong> - deduct now, pay taxes on withdrawals. Best when your rate is high.</p>
-            <p style={{ margin: "12px 0 0" }}><strong>Rule of thumb:</strong> 12% or below → Roth. 22% → toss-up. 24%+ → Traditional.</p>
+            <p style={{ margin: "12px 0 0" }}><strong>Rule of thumb:</strong> 12% or below → Roth. 22%+ → Traditional.</p>
             <p style={{ margin: "8px 0 0" }}><strong>Allocation tip:</strong> A target-date fund matching your retirement year is a solid default.</p>
             <p style={{ margin: "8px 0 0", fontSize: 11, fontStyle: "italic" }}>⚠️ A 1% annual fee can cost ~$200K+ over 30 years. Use low-cost index funds when available.</p>
             <div style={{ marginTop: 16, padding: 12, backgroundColor: "#E3F2FD", borderRadius: 8, border: "1px solid #BBDEFB" }}>
