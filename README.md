@@ -10,7 +10,7 @@ An interactive guide to help people choose the right retirement accounts — HSA
 - **Dynamic advice cards** for HSA, 401k (Roth vs Traditional), and IRA
 - **Compound growth projections** at 7% average return
 - **Expandable "Learn more"** sections with educational detail
-- All numbers based on **2025 IRS limits and tax brackets**
+- Tax brackets & HSA limits based on **2027 IRS figures**; 401k/IRA limits & phaseouts based on **2026** (2027 not yet announced)
 
 ## Deploy to GitHub Pages
 
@@ -37,4 +37,4 @@ npm run dev
 
 ## Disclaimer
 
-This is educational information, not financial advice. Consult a professional for your specific situation. Tax brackets and contribution limits reflect 2025 IRS guidelines.
+This is educational information, not financial advice. Consult a professional for your specific situation. Tax brackets and HSA limits reflect 2027 IRS guidelines; 401k/IRA limits reflect 2026.
