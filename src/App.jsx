@@ -1,23 +1,24 @@
 import { useState } from "react";
 
+// 2027 brackets — IRS Rev. Proc. 2026-35 (IR-2026-133, Nov. 5, 2026)
 const BRACKETS_SINGLE = [
-  { min: 0, max: 12400, rate: 10 },
-  { min: 12400, max: 50400, rate: 12 },
-  { min: 50400, max: 105700, rate: 22 },
-  { min: 105700, max: 201775, rate: 24 },
-  { min: 201775, max: 256225, rate: 32 },
-  { min: 256225, max: 640600, rate: 35 },
-  { min: 640600, max: Infinity, rate: 37 },
+  { min: 0, max: 12800, rate: 10 },
+  { min: 12800, max: 52025, rate: 12 },
+  { min: 52025, max: 109125, rate: 22 },
+  { min: 109125, max: 208325, rate: 24 },
+  { min: 208325, max: 264550, rate: 32 },
+  { min: 264550, max: 661375, rate: 35 },
+  { min: 661375, max: Infinity, rate: 37 },
 ];
 
 const BRACKETS_MFJ = [
-  { min: 0, max: 24800, rate: 10 },
-  { min: 24800, max: 100800, rate: 12 },
-  { min: 100800, max: 211400, rate: 22 },
-  { min: 211400, max: 403550, rate: 24 },
-  { min: 403550, max: 512450, rate: 32 },
-  { min: 512450, max: 768700, rate: 35 },
-  { min: 768700, max: Infinity, rate: 37 },
+  { min: 0, max: 25600, rate: 10 },
+  { min: 25600, max: 104050, rate: 12 },
+  { min: 104050, max: 218250, rate: 22 },
+  { min: 218250, max: 416650, rate: 24 },
+  { min: 416650, max: 529100, rate: 32 },
+  { min: 529100, max: 793650, rate: 35 },
+  { min: 793650, max: Infinity, rate: 37 },
 ];
 
 function getMarginalBracket(income, filing) {
@@ -28,9 +29,11 @@ function getMarginalBracket(income, filing) {
   return 10;
 }
 
-const HSA_LIMIT_SELF = 4400;
-const HSA_LIMIT_FAMILY = 8750;
+// 2027 HSA limits — IRS Rev. Proc. 2026-24
+const HSA_LIMIT_SELF = 4500;
+const HSA_LIMIT_FAMILY = 9000;
 const HSA_CATCHUP = 1000;
+// 401k/IRA limits + phaseouts: 2026 (Notice 2025-67). 2027 not yet announced by IRS.
 const LIMIT_401K = 24500;
 const LIMIT_401K_CATCHUP = 8000;
 const LIMIT_401K_SUPER_CATCHUP = 11250;
@@ -321,7 +324,7 @@ export default function RetirementGuide() {
           marginBottom: 12,
           letterSpacing: 0.3,
         }}>
-          2026 IRS Limits & Brackets
+          2027 Tax Brackets & HSA Limits
         </span>
         <h1 style={{ fontSize: 28, fontWeight: 700, color: "#2D2A3E", margin: "0 0 14px" }}>
           The Best Financial Move Nobody Taught Me
@@ -528,7 +531,7 @@ export default function RetirementGuide() {
           <p style={{ margin: 0 }}>
             Built with care to help people make better financial decisions.<br />
             Not financial advice - consult a professional for your situation.<br />
-            Tax brackets & limits reflect 2026 IRS guidelines.
+            Tax brackets & HSA limits reflect 2027 IRS guidelines. 401k/IRA limits reflect 2026 (2027 not yet announced).
           </p>
         </div>
       </div>
